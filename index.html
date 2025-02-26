@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>艺术色彩填充格子</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 切换侧边栏按钮 -->
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+  
+  <!-- 侧边栏：显示已保存的 Grid 列表 -->
+  <div class="sidebar" id="sidebar">
+    <h2>存储的 Grid</h2>
+    <div id="gridList"></div>
+    <input type="text" id="newGridName" placeholder="输入 Grid 名称">
+    <button id="saveGridBtn">保存当前 Grid</button>
+  </div>
+  
+  <!-- 主内容区域：网格标题、颜色选择器和绘图网格 -->
+  <div class="grid-container" id="gridContainer">
+    <h2 class="grid-title">
+      <input type="text" id="gridTitle" value="当前 Grid">
+    </h2>
+    <div class="color-picker" id="colorPicker"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+  
+  <!-- 按正确顺序加载 JS 模块 -->
+  <script src="js/colorPicker.js"></script>
+  <script src="js/gridManager.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

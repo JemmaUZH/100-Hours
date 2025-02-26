@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f6f5f3;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  /* 侧边栏 */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #202123;
+    color: #fff;
+    padding: 20px;
+    transform: translateX(-260px);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  /* 切换侧边栏按钮 */
+  .toggle-btn {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background: #343541;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  /* 主内容区域 */
+  .grid-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow: auto;
+    width: 100%;
+  }
+  
+  /* 网格标题 */
+  .grid-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .grid-title input {
+    font-size: 20px;
+    border: none;
+    text-align: center;
+    background: none;
+    outline: none;
+    width: 100%;
+  }
+  
+  /* 颜色选择器 */
+  .color-picker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .color-picker div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #666;
+  }
+  
+  /* 网格 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    gap: 5px;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    background-color: #eae0d5;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  /* 可选：侧边栏列表项样式 */
+  .grid-item {
+    margin-bottom: 5px;
+    cursor: pointer;
+    padding: 3px;
+    border-bottom: 1px solid #444;
+  }
+  

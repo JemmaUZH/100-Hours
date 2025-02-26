@@ -1,0 +1,22 @@
+{
+    "sourceFile": "css/styles.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1740586906879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740587254362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,9 +69,9 @@\n   \n   /* 颜色选择器 */\n   .color-picker {\n     display: grid;\n-    grid-template-columns: repeat(5, 1fr);\n+    grid-template-columns: repeat(4, 1fr);\n     gap: 5px;\n     margin-bottom: 10px;\n   }\n   \n"
+                }
+            ],
+            "date": 1740586906879,
+            "name": "Commit-0",
+            "content": "body {\n    display: flex;\n    height: 100vh;\n    background-color: #f6f5f3;\n    margin: 0;\n    font-family: Arial, sans-serif;\n    overflow: hidden;\n  }\n  \n  /* 侧边栏 */\n  .sidebar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 250px;\n    height: 100vh;\n    background-color: #202123;\n    color: #fff;\n    padding: 20px;\n    transform: translateX(-260px);\n    transition: transform 0.3s ease-in-out;\n    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);\n  }\n  \n  .sidebar.open {\n    transform: translateX(0);\n  }\n  \n  /* 切换侧边栏按钮 */\n  .toggle-btn {\n    position: fixed;\n    left: 10px;\n    top: 10px;\n    background: #343541;\n    color: #fff;\n    border: none;\n    padding: 8px;\n    cursor: pointer;\n    border-radius: 4px;\n    z-index: 1000;\n  }\n  \n  /* 主内容区域 */\n  .grid-container {\n    flex: 1;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    overflow: auto;\n    width: 100%;\n  }\n  \n  /* 网格标题 */\n  .grid-title {\n    font-size: 20px;\n    margin-bottom: 10px;\n    text-align: center;\n  }\n  \n  .grid-title input {\n    font-size: 20px;\n    border: none;\n    text-align: center;\n    background: none;\n    outline: none;\n    width: 100%;\n  }\n  \n  /* 颜色选择器 */\n  .color-picker {\n    display: grid;\n    grid-template-columns: repeat(5, 1fr);\n    gap: 5px;\n    margin-bottom: 10px;\n  }\n  \n  .color-picker div {\n    width: 30px;\n    height: 30px;\n    border-radius: 50%;\n    cursor: pointer;\n    border: 1px solid #666;\n  }\n  \n  /* 网格 */\n  .grid {\n    display: grid;\n    grid-template-columns: repeat(10, 50px);\n    grid-template-rows: repeat(10, 50px);\n    gap: 5px;\n  }\n  \n  .cell {\n    width: 50px;\n    height: 50px;\n    background-color: #eae0d5;\n    border-radius: 5px;\n    transition: background-color 0.3s;\n    cursor: pointer;\n  }\n  \n  /* 可选：侧边栏列表项样式 */\n  .grid-item {\n    margin-bottom: 5px;\n    cursor: pointer;\n    padding: 3px;\n    border-bottom: 1px solid #444;\n  }\n  "
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "js/colorPicker.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1740586906880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740587280569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,11 @@\n-// 颜色数组（印象风格色组）\n-const colors = [\n-    \"#FFFDE7\", \"#FFF9C4\", \"#FFF3E0\", \"#FFE0B2\", \"#FFECB3\",\n-    \"#FFCCBC\", \"#F8BBD0\", \"#F3E5F5\", \"#E1BEE7\", \"#E3F2FD\",\n-    \"#B3E5FC\", \"#E8F5E9\", \"#B2DFDB\", \"#FFF59D\", \"#FFCC80\",\n-    \"#FFB74D\", \"#FFA726\", \"#FF9800\", \"#F57C00\", \"#42A5F5\",\n-    \"#1E88E5\", \"#1565C0\", \"#0D47A1\", \"#5D4037\", \"#3E2723\"\n-  ];\n-  \n+// 定义三组颜色，每组 4 个，按从浅到深排列\n+const yellowColors = [\"#FFFDE7\", \"#FFF9C4\", \"#FFF59D\", \"#FFECB3\"];\n+const greenColors  = [\"#E8F5E9\", \"#B2DFDB\", \"#A5D6A7\", \"#81C784\"];\n+const redColors    = [\"#FFCCBC\", \"#F8BBD0\", \"#FFB74D\", \"#FF9800\"];\n+\n+// 合并成一个 12 个颜色的数组，顺序：第一行黄色系，第二行绿色系，第三行红色系\n+const colors = [...yellowColors, ...greenColors, ...redColors];\n   /**\n    * 初始化颜色选择器，将所有颜色选项添加到页面上\n    */\n   function initColorPicker() {\n"
+                },
+                {
+                    "date": 1740587651220,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n // 定义三组颜色，每组 4 个，按从浅到深排列\n-const yellowColors = [\"#FFFDE7\", \"#FFF9C4\", \"#FFF59D\", \"#FFECB3\"];\n-const greenColors  = [\"#E8F5E9\", \"#B2DFDB\", \"#A5D6A7\", \"#81C784\"];\n-const redColors    = [\"#FFCCBC\", \"#F8BBD0\", \"#FFB74D\", \"#FF9800\"];\n+const yellowColors = [\"#FFF9E3\", \"#FFF3B0\", \"#FFE684\", \"#FFDC48\"];  // 温暖、柔和的黄色\n+const greenColors  = [\"#E8F5E9\", \"#C8E6C9\", \"#A5D6A7\", \"#81C784\"];  // 清新、自然的绿色\n+const redColors    = [\"#FFEBEE\", \"#FFCDD2\", \"#EF9A9A\", \"#E57373\"];  // 柔和、带点暖意的红色\n \n // 合并成一个 12 个颜色的数组，顺序：第一行黄色系，第二行绿色系，第三行红色系\n const colors = [...yellowColors, ...greenColors, ...redColors];\n   /**\n"
+                }
+            ],
+            "date": 1740586906880,
+            "name": "Commit-0",
+            "content": "// 颜色数组（印象风格色组）\nconst colors = [\n    \"#FFFDE7\", \"#FFF9C4\", \"#FFF3E0\", \"#FFE0B2\", \"#FFECB3\",\n    \"#FFCCBC\", \"#F8BBD0\", \"#F3E5F5\", \"#E1BEE7\", \"#E3F2FD\",\n    \"#B3E5FC\", \"#E8F5E9\", \"#B2DFDB\", \"#FFF59D\", \"#FFCC80\",\n    \"#FFB74D\", \"#FFA726\", \"#FF9800\", \"#F57C00\", \"#42A5F5\",\n    \"#1E88E5\", \"#1565C0\", \"#0D47A1\", \"#5D4037\", \"#3E2723\"\n  ];\n  \n  /**\n   * 初始化颜色选择器，将所有颜色选项添加到页面上\n   */\n  function initColorPicker() {\n    const colorPicker = document.getElementById(\"colorPicker\");\n    colors.forEach(color => {\n      const colorDiv = document.createElement(\"div\");\n      colorDiv.style.background = color;\n      // 点击后设置全局 CSS 变量，用于更新选中颜色\n      colorDiv.addEventListener(\"click\", () => {\n        document.documentElement.style.setProperty('--selected-color', color);\n      });\n      colorPicker.appendChild(colorDiv);\n    });\n  }\n  \n  // 设置默认选中颜色（使用第一个颜色）\n  document.documentElement.style.setProperty('--selected-color', colors[0]);\n  "
+        }
+    ]
+}

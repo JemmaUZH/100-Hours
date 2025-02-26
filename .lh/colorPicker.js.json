@@ -1,0 +1,18 @@
+{
+    "sourceFile": "colorPicker.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740586676833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740586676833,
+            "name": "Commit-0",
+            "content": "const colors = [\"#FFFDE7\", \"#FFF9C4\", \"#FFF3E0\", \"#FFE0B2\", \"#FFECB3\"];\n\nfunction initColorPicker() {\n    const colorPicker = document.getElementById(\"colorPicker\");\n    colors.forEach(color => {\n        const colorDiv = document.createElement(\"div\");\n        colorDiv.style.background = color;\n        colorDiv.onclick = () => {\n            document.documentElement.style.setProperty('--selected-color', color);\n        };\n        colorPicker.appendChild(colorDiv);\n    });\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "js/gridManager.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1740586906879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740587421628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,18 @@\n     const grid = document.getElementById(\"grid\");\n     for (let i = 0; i < 100; i++) {\n       const cell = document.createElement(\"div\");\n       cell.classList.add(\"cell\");\n-      // 点击时将格子的背景色更新为当前选中的颜色\n+\n+      // 单击：设置为当前选中的颜色\n       cell.addEventListener(\"click\", () => {\n         cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');\n       });\n+\n+        // 双击：清除颜色\n+        cell.addEventListener(\"dblclick\", () => {\n+            cell.style.backgroundColor = “#eae0d5”;\n+            });\n       grid.appendChild(cell);\n     }\n   }\n   \n"
+                },
+                {
+                    "date": 1740587437331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,21 +3,21 @@\n  */\n function initGrid() {\n     const grid = document.getElementById(\"grid\");\n     for (let i = 0; i < 100; i++) {\n-      const cell = document.createElement(\"div\");\n-      cell.classList.add(\"cell\");\n+        const cell = document.createElement(\"div\");\n+        cell.classList.add(\"cell\");\n \n-      // 单击：设置为当前选中的颜色\n-      cell.addEventListener(\"click\", () => {\n-        cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');\n-      });\n+        // 单击：设置为当前选中的颜色\n+        cell.addEventListener(\"click\", () => {\n+            cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');\n+        });\n \n-        // 双击：清除颜色\n-        cell.addEventListener(\"dblclick\", () => {\n-            cell.style.backgroundColor = “#eae0d5”;\n-            });\n-      grid.appendChild(cell);\n+            // 双击：清除颜色\n+            cell.addEventListener(\"dblclick\", () => {\n+                    cell.style.backgroundColor = \"#eae0d5\";\n+                    });\n+        grid.appendChild(cell);\n     }\n   }\n   \n   /**\n"
+                }
+            ],
+            "date": 1740586906879,
+            "name": "Commit-0",
+            "content": "/**\n * 初始化 10x10 网格，并为每个格子绑定点击事件\n */\nfunction initGrid() {\n    const grid = document.getElementById(\"grid\");\n    for (let i = 0; i < 100; i++) {\n      const cell = document.createElement(\"div\");\n      cell.classList.add(\"cell\");\n      // 点击时将格子的背景色更新为当前选中的颜色\n      cell.addEventListener(\"click\", () => {\n        cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');\n      });\n      grid.appendChild(cell);\n    }\n  }\n  \n  /**\n   * 保存当前 Grid 状态到 localStorage\n   */\n  function saveCurrentGrid() {\n    const gridTitleInput = document.getElementById(\"gridTitle\");\n    let gridName = gridTitleInput.value.trim() || \"Unnamed Grid\";\n    const cells = document.querySelectorAll(\".cell\");\n    const cellColors = Array.from(cells).map(cell => cell.style.backgroundColor || \"\");\n    localStorage.setItem(\"grid_\" + gridName, JSON.stringify(cellColors));\n    alert(\"Grid 已保存: \" + gridName);\n    updateGridList();\n  }\n  \n  /**\n   * 更新侧边栏中保存的 Grid 列表\n   */\n  function updateGridList() {\n    const gridList = document.getElementById(\"gridList\");\n    gridList.innerHTML = \"\";\n    for (let i = 0; i < localStorage.length; i++) {\n      const key = localStorage.key(i);\n      if (key.startsWith(\"grid_\")) {\n        const gridName = key.substring(5);\n        const gridItem = document.createElement(\"div\");\n        gridItem.textContent = gridName;\n        gridItem.classList.add(\"grid-item\");\n        // 点击列表项加载对应的 Grid\n        gridItem.addEventListener(\"click\", () => {\n          loadGrid(gridName);\n        });\n        gridList.appendChild(gridItem);\n      }\n    }\n  }\n  \n  /**\n   * 根据保存的状态加载 Grid\n   */\n  function loadGrid(gridName) {\n    const cellColors = JSON.parse(localStorage.getItem(\"grid_\" + gridName));\n    if (cellColors) {\n      const cells = document.querySelectorAll(\".cell\");\n      cells.forEach((cell, index) => {\n        cell.style.backgroundColor = cellColors[index] || \"#eae0d5\";\n      });\n      document.getElementById(\"gridTitle\").value = gridName;\n    }\n  }\n  "
+        }
+    ]
+}

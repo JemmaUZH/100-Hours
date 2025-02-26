@@ -1,0 +1,18 @@
+{
+    "sourceFile": "gridManager.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740586693154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740586693154,
+            "name": "Commit-0",
+            "content": "function initGrid() {\n    const grid = document.getElementById(\"grid\");\n    for (let i = 0; i < 100; i++) {\n        const cell = document.createElement(\"div\");\n        cell.classList.add(\"cell\");\n        cell.addEventListener(\"click\", () => {\n            cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');\n        });\n        grid.appendChild(cell);\n    }\n}\n\nfunction saveCurrentGrid() {\n    const gridName = document.getElementById(\"gridTitle\").value || \"Unnamed Grid\";\n    const cells = document.querySelectorAll(\".cell\");\n    const cellColors = Array.from(cells).map(cell => cell.style.backgroundColor || \"\");\n    localStorage.setItem(\"grid_\" + gridName, JSON.stringify(cellColors));\n    alert(\"Grid 已保存: \" + gridName);\n    updateGridList();\n}\n\nfunction updateGridList() {\n    const gridList = document.getElementById(\"gridList\");\n    gridList.innerHTML = \"\";\n    Object.keys(localStorage).filter(key => key.startsWith(\"grid_\")).forEach(key => {\n        const gridName = key.substring(5);\n        const gridItem = document.createElement(\"div\");\n        gridItem.textContent = gridName;\n        gridItem.onclick = () => loadGrid(gridName);\n        gridList.appendChild(gridItem);\n    });\n}\n\nfunction loadGrid(gridName) {\n    const cellColors = JSON.parse(localStorage.getItem(\"grid_\" + gridName));\n    if (cellColors) {\n        document.querySelectorAll(\".cell\").forEach((cell, index) => {\n            cell.style.backgroundColor = cellColors[index] || \"#eae0d5\";\n        });\n        document.getElementById(\"gridTitle\").value = gridName;\n    }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "js/main.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740586903134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740586903134,
+            "name": "Commit-0",
+            "content": "document.addEventListener(\"DOMContentLoaded\", () => {\n    // 初始化颜色选择器和网格\n    initColorPicker();\n    initGrid();\n    updateGridList();\n  \n    // 绑定侧边栏切换事件\n    document.getElementById(\"toggleBtn\").addEventListener(\"click\", toggleSidebar);\n    \n    // 绑定保存按钮事件\n    document.getElementById(\"saveGridBtn\").addEventListener(\"click\", saveCurrentGrid);\n    \n    // 当窗口大小改变时，让主区域滚动到顶部\n    window.addEventListener('resize', () => {\n      document.getElementById(\"gridContainer\").scrollTop = 0;\n    });\n  });\n  \n  /**\n   * 切换侧边栏的显示状态\n   */\n  function toggleSidebar() {\n    document.getElementById(\"sidebar\").classList.toggle(\"open\");\n  }\n  "
+        }
+    ]
+}
