@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术色彩填充格子</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f6f5f3;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 250px;
+            background: rgba(221, 221, 221, 0.85);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100vh;
+            transition: left 0.3s ease-in-out;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .toggle-btn {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background: #a67c52;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .grid-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            overflow: auto;
+            width: 100%;
+        }
+        .grid-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .grid-title input {
+            font-size: 20px;
+            border: none;
+            text-align: center;
+            background: none;
+            outline: none;
+            width: 100%;
+        }
+        .color-picker {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .color-picker div {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid #666;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(10, 50px);
+            gap: 5px;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: #eae0d5;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <h2>存储的 Grid</h2>
+        <div id="gridList"></div>
+        <input type="text" id="newGridName" placeholder="输入 Grid 名称">
+        <button onclick="saveCurrentGrid()">保存当前 Grid</button>
+    </div>
+    <div class="grid-container" id="gridContainer">
+        <h2 class="grid-title">
+            <input type="text" id="gridTitle" value="当前 Grid">
+        </h2>
+        <div class="color-picker" id="colorPicker"></div>
+        <div class="grid" id="grid"></div>
+    </div>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+        
+        const colors = [
+            '#f4c2c2', '#e8a8a8', '#d89696', '#c88585', '#b87474',
+            '#a8c4e4', '#96b8d8', '#85a8cc', '#7498c0', '#6488b4',
+            '#c2e4c2', '#a8d8a8', '#96cc96', '#85c085', '#74b474',
+            '#f4e4c2', '#e8d8a8', '#d8c896', '#c8b885', '#b8a874',
+            '#d8a8e4', '#c896d8', '#b885cc', '#a874c0', '#9864b4'
+        ];
+        
+        const colorPicker = document.getElementById("colorPicker");
+        colors.forEach(color => {
+            const colorDiv = document.createElement("div");
+            colorDiv.style.background = color;
+            colorDiv.onclick = () => document.documentElement.style.setProperty('--selected-color', color);
+            colorPicker.appendChild(colorDiv);
+        });
+        
+        const grid = document.getElementById("grid");
+        const gridSize = 100;
+        
+        for (let i = 0; i < gridSize; i++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.addEventListener("click", () => {
+                cell.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--selected-color');
+                saveCurrentGrid();
+            });
+            grid.appendChild(cell);
+        }
+        
+        function focusOnTop() {
+            document.getElementById("gridContainer").scrollTop = 0;
+        }
+        
+        window.addEventListener('resize', focusOnTop);
+    </script>
+</body>
+</html>
+
